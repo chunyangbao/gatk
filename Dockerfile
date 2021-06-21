@@ -3,9 +3,9 @@ FROM broadinstitute/gatk:gatkbase-2.0.2 AS gradleBuild
 LABEL stage=gatkIntermediateBuildImage
 ARG RELEASE=false
 
-RUN ls .
 ADD . /gatk
 WORKDIR /gatk
+RUN ls .
 
 # Get an updated gcloud signing key, in case the one in the base image has expired
 RUN curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
